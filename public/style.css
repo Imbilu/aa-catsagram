@@ -10,3 +10,29 @@
     width: 400px;
     margin: 30px;
 }
+
+.comment-form {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#comment {
+    margin: 10px;
+}
+
+.comments {
+    border: 1px solid;
+    width: 500px;
+    height: 300px;
+    margin: 10px;
+    background-color: thistle;
+    text-align: center;
+}
+
+.comment-text {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}

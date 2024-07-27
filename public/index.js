@@ -2,6 +2,7 @@ window.onload = () => {
     fetchImage();
     vote();
     newImage();
+    addComment();
 };
 
 function fetchImage() {
@@ -38,8 +39,23 @@ function newImage() {
 
     newImageBtn.addEventListener('click', event => {
         const score  = document.getElementById('score');
+        document.getElementById('comment').value = '';
+        document.getElementById('comments-box').innerHTML = '';
         score.innerHTML = 0;
 
         fetchImage();
+    })
+}
+
+function addComment() {
+    const submit = document.getElementById('submit-comment');
+    submit.addEventListener('click', event => {
+        const comment = document.getElementById('comment').value;
+        const commentBox = document.getElementById('comments-box');
+        const newComment = document.createElement('p');
+        newComment.innerHTML = comment;
+        newComment.classList.add('comment-text');
+        commentBox.appendChild(newComment);
+        document.getElementById('comment').value = '';
     })
 }
