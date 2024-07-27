@@ -1,5 +1,10 @@
 window.onload = () => {
-    // 1. Fetch Cat Image (Replace with actual Cats API endpoint)
+    fetchImage();
+    vote();
+    newImage();
+};
+
+function fetchImage() {
     fetch('https://api.thecatapi.com/v1/images/search')
         .then(response => response.json())
         .then(data => {
@@ -12,4 +17,29 @@ window.onload = () => {
         .catch(error => {
             console.error('Error fetching cat image:', error); // Handle potential errors
         });
-};
+}
+
+function vote() {
+    const upvote = document.getElementById('upvote');
+    const downvote = document.getElementById('downvote');
+    const score  = document.getElementById('score');
+
+    upvote.addEventListener('click', event => {
+        score.innerHTML = Number(score.innerHTML) + 1;
+    })
+
+    downvote.addEventListener('click', event => {
+        score.innerHTML = Number(score.innerHTML) - 1;
+    })
+}
+
+function newImage() {
+    const newImageBtn = document.getElementById('new-img');
+
+    newImageBtn.addEventListener('click', event => {
+        const score  = document.getElementById('score');
+        score.innerHTML = 0;
+
+        fetchImage();
+    })
+}
